@@ -1,4 +1,4 @@
-# Docker for Bitcoin
+# Bitcoin for Docker
 
 [![Docker Stars](https://img.shields.io/docker/stars/acejam/bitcoin.svg?maxAge=2592000)](https://hub.docker.com/r/acejam/bitcoin)
 [![Docker Pulls](https://img.shields.io/docker/pulls/acejam/bitcoin.svg?maxAge=2592000)](https://hub.docker.com/r/acejam/bitcoin)
