@@ -1,5 +1,6 @@
 # Bitcoin for Docker
 
+[![Build Status](https://travis-ci.org/acejam/docker-bitcoin.svg?branch=master)](https://travis-ci.org/acejam/docker-bitcoin)
 [![Docker Stars](https://img.shields.io/docker/stars/acejam/bitcoin.svg?maxAge=2592000)](https://hub.docker.com/r/acejam/bitcoin)
 [![Docker Pulls](https://img.shields.io/docker/pulls/acejam/bitcoin.svg?maxAge=2592000)](https://hub.docker.com/r/acejam/bitcoin)
 
