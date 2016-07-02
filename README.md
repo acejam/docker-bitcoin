@@ -16,6 +16,7 @@ This container includes support for Bitcoin configuration values. These values c
 The following values are configurable:
 * `RPC_USER`
 * `RPC_PASS`
+* `RPC_ALLOW_IP`
 * `MAX_CONNECTIONS`
 * `RPC_PORT`
 * `PORT`
