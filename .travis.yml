@@ -5,3 +5,7 @@ services:
 
 script:
   - docker build -t acejam/bitcoin .
+
+branches:
+  only:
+    - master
