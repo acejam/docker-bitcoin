@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Joshua Noble <acejam@gmail.com>
 
 ENV RPC_USER bitcoinrpc
@@ -9,7 +9,7 @@ ENV RPC_PORT 8332
 ENV PORT 8333
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8842ce5e && \
-    echo "deb http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu trusty main" > /etc/apt/sources.list.d/bitcoin.list
+    echo "deb http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu xenial main" > /etc/apt/sources.list.d/bitcoin.list
 
 RUN apt-get update && \
     apt-get install -y bitcoind && \
