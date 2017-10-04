@@ -1,18 +1,11 @@
 FROM ubuntu:16.04
-MAINTAINER Joshua Noble <acejam@gmail.com>
-
-ENV RPC_USER bitcoinrpc
-ENV RPC_PASS P@ssw0rd
-ENV RPC_ALLOW_IP 127.0.0.1
-ENV MAX_CONNECTIONS 15
-ENV RPC_PORT 8332
-ENV PORT 8333
+LABEL maintainer "Joshua Noble <acejam@gmail.com>"
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8842ce5e && \
     echo "deb http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu xenial main" > /etc/apt/sources.list.d/bitcoin.list
 
 RUN apt-get update && \
-    apt-get install -y bitcoind=0.14.2-xenial1 && \
+    apt-get install -y bitcoind=0.15.0-xenial9 && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY docker-entrypoint.sh /usr/local/bin/
