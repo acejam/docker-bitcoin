@@ -1,16 +1,18 @@
-FROM ubuntu:16.04
-LABEL maintainer "Joshua Noble <acejam@gmail.com>"
+FROM felixweis/buildpack-deps:bitcoind
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8842ce5e && \
-    echo "deb http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu xenial main" > /etc/apt/sources.list.d/bitcoin.list
+ENV BITCOIN_REPOSITORY acejam
+ENV BITCOIN_BRANCH 0.15.1-indexes
 
-RUN apt-get update && \
-    apt-get install -y bitcoind=0.15.1-xenial9 && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
+RUN cd /root \
+	&& curl -L https://github.com/$BITCOIN_REPOSITORY/bitcoin/archive/$BITCOIN_BRANCH.tar.gz | tar xzv \
+	&& cd bitcoin-$BITCOIN_BRANCH/ \
+	&& ./autogen.sh \
+	&& ./configure --with-incompatible-bdb --disable-tests \
+	&& make \
+	&& make install \
+	&& cd .. \
+	&& rm -Rfv bitcoin-$BITCOIN_BRANCH/
 
 EXPOSE 8332 8333
-VOLUME ["/data/bitcoin"]
+VOLUME /data/bitcoin
 CMD ["/usr/bin/bitcoind", "-datadir=/data/bitcoin", "-printtoconsole"]
