@@ -13,4 +13,4 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 8332 8333
 VOLUME ["/data/bitcoin"]
-CMD ["/usr/bin/bitcoind", "-datadir=/data/bitcoin", "-printtoconsole"]
+CMD ["/usr/bin/bitcoind", "-datadir=/data/bitcoin"]
