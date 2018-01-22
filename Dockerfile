@@ -3,6 +3,10 @@ FROM felixweis/buildpack-deps:bitcoind
 ENV BITCOIN_REPOSITORY acejam
 ENV BITCOIN_BRANCH 0.15.1-indexes
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libzmq3-dev && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN cd /root \
 	&& curl -L https://github.com/$BITCOIN_REPOSITORY/bitcoin/archive/$BITCOIN_BRANCH.tar.gz | tar xzv \
 	&& cd bitcoin-$BITCOIN_BRANCH/ \
