@@ -15,4 +15,4 @@ RUN cd /root \
 
 EXPOSE 8332 8333
 VOLUME /data/bitcoin
-CMD ["/usr/bin/bitcoind", "-datadir=/data/bitcoin", "-printtoconsole"]
+CMD ["/usr/local/bin/bitcoind", "-datadir=/data/bitcoin"]
