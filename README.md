@@ -16,15 +16,11 @@ This container includes support for Bitcoin configuration values. These values c
 
 The following values are configurable:
 * `RPC_USER`
-* `RPC_PASS`
-* `RPC_ALLOW_IP`
-* `MAX_CONNECTIONS`
-* `RPC_PORT`
-* `PORT`
+* `RPC_PASSWORD`
 
 For example, to run the container with the username "DevUser" and a password of "P@ssw0rd123" with 10 max connections, you can run the following:
 
-      docker run -d -e RPC_USER="DevUser" -e RPC_PASS="P@ssw0rd123" -e MAX_CONNECTIONS=10 acejam/bitcoin:latest
+      docker run -d -e RPC_USER="DevUser" -e RPC_PASS="P@ssw0rd123" acejam/bitcoin:latest
 
 ## Data persistence
 
