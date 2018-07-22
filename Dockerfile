@@ -1,14 +1,16 @@
 FROM ubuntu:16.04
 LABEL maintainer "Joshua Noble <acejam@gmail.com>"
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8842ce5e && \
-    echo "deb http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu xenial main" > /etc/apt/sources.list.d/bitcoin.list
-
 RUN apt-get update && \
-    apt-get install -y bitcoind=0.15.1-xenial1 && \
+    apt-get install -y wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY docker-entrypoint.sh /usr/local/bin/
+RUN wget https://bitcoincore.org/bin/bitcoin-core-0.16.1/bitcoin-0.16.1-x86_64-linux-gnu.tar.gz && \
+    tar -xf bitcoin-0.16.1-x86_64-linux-gnu.tar.gz && \
+    cp bitcoin-0.16.1/bin/* /usr/bin && \
+    rm -rf bitcoin-0.16.1*
+
+COPY docker-entrypoint.sh /usr/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 8332 8333
